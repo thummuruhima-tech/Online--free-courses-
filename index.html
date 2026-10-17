@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreeLearn - Online Courses</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #302b63;
+      color: white;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 20px;
+      background: #e4e5ff;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #302b63;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+
+    main, .about {
+      padding: 30px 7%;
+    }
+
+    #search {
+      width: 100%;
+      max-width: 500px;
+      padding: 13px;
+      margin-bottom: 22px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .course {
+      background: white;
+      padding: 22px;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px #00000012;
+    }
+
+    .course a {
+      color: #4038a0;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      background: #302b63;
+      color: white;
+      padding: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>FreeLearn</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Learn New Skills for Free</h2>
+    <p>Explore programming, web development and technology.</p>
+    <a class="btn" href="#courses">Explore Courses</a>
+  </section>
+
+  <main id="courses">
+    <h2>Our Free Courses</h2>
+
+    <input
+      type="text"
+      id="search"
+      placeholder="Search courses..."
+    >
+
+    <div class="courses">
+      <article class="course">
+        <h3>🐍 Python Programming</h3>
+        <p>Learn variables, loops and functions.</p>
+        <a href="https://www.w3schools.com/python/"
+           target="_blank" rel="noopener">Start Learning</a>
+      </article>
+
+      <article class="course">
+        <h3>🌐 Web Development</h3>
+        <p>Learn HTML, CSS and JavaScript.</p>
+        <a href="https://www.freecodecamp.org/learn/"
+           target="_blank" rel="noopener">Start Learning</a>
+      </article>
+
+      <article class="course">
+        <h3>💻 Java Programming</h3>
+        <p>Practice Java fundamentals and OOP.</p>
+        <a href="https://www.w3schools.com/java/"
+           target="_blank" rel="noopener">Start Learning</a>
+      </article>
+
+      <article class="course">
+        <h3>🗄️ DBMS and SQL</h3>
+        <p>Understand databases and SQL queries.</p>
+        <a href="https://www.w3schools.com/sql/"
+           target="_blank" rel="noopener">Start Learning</a>
+      </article>
+    </div>
+
+    <p id="noResults" hidden>No matching courses found.</p>
+  </main>
+
+  <section id="about" class="about">
+    <h2>About FreeLearn</h2>
+    <p>
+      A student learning project providing links to free
+      online educational resources.
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2026 FreeLearn | Student Project</p>
+  </footer>
+
+  <script>
+    const search = document.getElementById("search");
+    const courses = document.querySelectorAll(".course");
+    const noResults = document.getElementById("noResults");
+
+    search.addEventListener("input", function () {
+      const query = search.value.toLowerCase();
+      let visible = 0;
+
+      courses.forEach(function (course) {
+        const matches = course.textContent
+          .toLowerCase()
+          .includes(query);
+
+        course.hidden = !matches;
+
+        if (matches) {
+          visible++;
+        }
+      });
+
+      noResults.hidden = visible !== 0;
+    });
+  </script>
+</body>
+  </html>
